@@ -4,7 +4,14 @@ export const Map = () => {
   const BOSTON_COORDINATES: [number, number] = [42.3601, -71.0589]
 
   return (
-    <div className="bg-green-500 w-full min-w-100 min-h-100 md:w-200 md:h-4/5">
+    <div
+      className="
+        mt-20 w-full h-150 
+        md:w-120 md:h-200 md:left-0  md:fixed md:z-10 md:top-20 md:mt-0 md:p-0
+        lg:w-120 lg:left-0  lg:fixed lg:z-10 lg:top-20 lg:mt-0 lg:p-0
+        xl:w-150 xl:left-auto xl:mr-150
+      "
+    >
       <MapContainer
         center={BOSTON_COORDINATES}
         zoom={13}
