@@ -1,15 +1,8 @@
 import { Header } from "./components/Header"
 import { RestaurantList } from "./components/RestaurantList"
 import { Map } from "./components/Map"
+import type { restaurantCardProps } from "./components/RestaurantCard"
 
-export type restaurantCardProps = {
-  name: string
-
-  position: { lat: number; lng: number }
-  address: string
-  notes: string
-  googleMapLink: string
-}
 export const App = () => {
   const restaurantData: Array<restaurantCardProps> = [
     {
@@ -75,8 +68,8 @@ export const App = () => {
       <Header />
       {/* <div className="h-screen flex flex-wrap md:flex-nowrap gap-10 justify-center p-5"> */}
       <div className="flex md:flex-nowrap flex-wrap xl:justify-center ">
-        <Map />
-        <RestaurantList data={restaurantData} />
+        <Map dataArr={restaurantData} />
+        <RestaurantList dataArr={restaurantData} />
       </div>
     </div>
   )

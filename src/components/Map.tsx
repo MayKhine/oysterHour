@@ -1,8 +1,14 @@
 import { MapContainer, TileLayer } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
-export const Map = () => {
-  const BOSTON_COORDINATES: [number, number] = [42.3601, -71.0589]
+import type { restaurantCardProps } from "./RestaurantCard"
+import { MapMarker } from "./MapMarker"
 
+type MapPros = {
+  dataArr: Array<restaurantCardProps>
+}
+export const Map = ({ dataArr }: MapPros) => {
+  const BOSTON_COORDINATES: [number, number] = [42.3601, -71.0589]
+  console.log("data arr:", dataArr)
   return (
     <div
       className="
@@ -21,6 +27,15 @@ export const Map = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; OpenStreetMap contributors"
         />
+        {dataArr.map((restaurantData, index) => {
+          return (
+            <MapMarker
+              key={index}
+              name={restaurantData.name}
+              position={restaurantData.position}
+            />
+          )
+        })}
       </MapContainer>
     </div>
   )
