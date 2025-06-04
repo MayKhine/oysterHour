@@ -1,15 +1,18 @@
 import L from "leaflet"
 import { useEffect, useRef } from "react"
 import { Marker, Popup } from "react-leaflet"
-import type { restaurantType } from "./RestaurantCard"
+import type { RestaurantType } from "./RestaurantCard"
+import type { SelectionType } from "../App"
 
 type MapMarkerProps = {
+  id: string
   position: { lat: number; lng: number }
   name: string
-  selection: restaurantType | null
-  setSelection: (restaurant: restaurantType) => void
+  selection: RestaurantType | null
+  setSelection: (restaurant: SelectionType) => void
 }
 export const MapMarker = ({
+  id,
   position,
   name,
   selection,
@@ -45,7 +48,7 @@ export const MapMarker = ({
   }
 
   const handleClick = () => {
-    setSelection({ name, position })
+    setSelection({ id, name, position, scroll: true })
   }
   return (
     <Marker

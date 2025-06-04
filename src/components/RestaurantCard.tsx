@@ -1,20 +1,25 @@
 import { forwardRef } from "react"
+import type { SelectionType } from "../App"
 
-export type restaurantType = {
+export type RestaurantType = {
+  id: string
   name: string
   position: { lat: number; lng: number }
+  phone?: number
   address?: string
-  notes?: string
+  link?: string
   googleMapLink?: string
+  hours?: { day: string; startHr: number; endHr: number }[]
+  notes?: string
 }
 
-type restaurantCardProps = {
-  data: restaurantType
-  setSelection: (restaurant: restaurantType) => void
+type RestaurantCardProps = {
+  data: RestaurantType
+  setSelection: (restaurant: SelectionType) => void
   isSelected: boolean
 }
 
-export const RestaurantCard = forwardRef<HTMLDivElement, restaurantCardProps>(
+export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
   ({ data, setSelection, isSelected }, ref?) => {
     return (
       <div
@@ -29,7 +34,12 @@ export const RestaurantCard = forwardRef<HTMLDivElement, restaurantCardProps>(
         <div
           className="flex flex-col cursor-pointer"
           onClick={() => {
-            setSelection({ name: data.name, position: data.position })
+            setSelection({
+              id: data.id,
+              name: data.name,
+              position: data.position,
+              scroll: false,
+            })
           }}
         >
           <span>{data.address}</span>

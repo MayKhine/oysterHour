@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react"
-import { RestaurantCard, type restaurantType } from "./RestaurantCard"
+import { RestaurantCard, type RestaurantType } from "./RestaurantCard"
+import type { SelectionType } from "../App"
 
 type RestaurantListProps = {
-  dataArr: Array<restaurantType>
-  selection: restaurantType | null
-  setSelection: (restaurant: restaurantType) => void
+  dataArr: Array<RestaurantType>
+  selection: SelectionType | null
+  setSelection: (restaurant: SelectionType) => void
 }
 
 export const RestaurantList = ({
@@ -15,7 +16,7 @@ export const RestaurantList = ({
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    if (selection) {
+    if (selection?.scroll) {
       const cardIndex = dataArr.findIndex((res) => res.name === selection.name)
       const card = cardRefs.current[cardIndex]
       if (card) {
@@ -28,8 +29,8 @@ export const RestaurantList = ({
     <div
       className="box-border 
           opacity-80 w-full p-5 pt-0 flex flex-col gap-5
-          md:ml-120 md:mt-20 md:p-10 md:pt-0 md:min-h-max
-          lg:ml-120 lg:mt-20  lg:min-h-max 
+          md:ml-120  md:p-10 md:pt-0 md:min-h-max
+          lg:ml-120  lg:min-h-max 
           xl:ml-150 xl:w-150 
         "
     >
