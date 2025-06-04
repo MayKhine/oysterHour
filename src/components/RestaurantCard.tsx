@@ -5,7 +5,7 @@ export type RestaurantType = {
   id: string
   name: string
   position: { lat: number; lng: number }
-  phone?: number
+  phone?: string
   address?: string
   link?: string
   googleMapLink?: string
@@ -21,7 +21,7 @@ type RestaurantCardProps = {
 
 export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
   ({ data, setSelection, isSelected }, ref?) => {
-    const formatPhoneNum = (phone: number) => {
+    const formatPhoneNum = (phone: string) => {
       const cleanedPhNum = ("" + phone).replace(/\D/g, "")
 
       if (cleanedPhNum.length === 10) {
@@ -39,72 +39,99 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
     }
 
     const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+    const formatHr = (hour: number) => {
+      if (hour == 12) return "12 PM"
+      if (hour > 12) {
+        return hour - 12 + " PM"
+      } else {
+        return hour + " AM"
+      }
+      return hour
+    }
 
-    const formatHappyHr = (
-      happyHrArr: Array<{ day: string; startHr: number; endHr: number }>
+    const formatOysterDaysAndHours = (
+      oysterDays: Array<{ day: string; startHr: number; endHr: number }>
     ) => {
-      console.log("happy hr arr : ", happyHrArr)
-      const displayHappyHrArr: Array<string> = []
-      let tempDay = happyHrArr[0].day
-      let tempStartHr = happyHrArr[0].startHr
-      let tempEndHr = happyHrArr[0].endHr
+      const textArrToDisplay: Array<string> = []
+      let tempDay = oysterDays[0].day
+      let tempStartHr = oysterDays[0].startHr
+      let tempEndHr = oysterDays[0].endHr
       let weekdaysOffsetIndex = weekdays.indexOf(
-        happyHrArr[0].day.toLowerCase()
+        oysterDays[0].day.toLowerCase()
       )
 
-      for (let i = 1; i < happyHrArr.length; i++) {
+      for (let i = 1; i < oysterDays.length; i++) {
         if (
-          happyHrArr[i].day.toLowerCase() !==
+          oysterDays[i].day.toLowerCase() !==
             weekdays[weekdaysOffsetIndex + i] ||
-          happyHrArr[i].startHr !== tempStartHr ||
-          happyHrArr[i].endHr !== tempEndHr
+          oysterDays[i].startHr !== tempStartHr ||
+          oysterDays[i].endHr !== tempEndHr
         ) {
-          if (tempDay.toLowerCase() !== happyHrArr[i - 1].day.toLowerCase()) {
+          if (tempDay.toLowerCase() !== oysterDays[i - 1].day.toLowerCase()) {
             tempDay +=
               " - " +
-              happyHrArr[i - 1].day +
+              oysterDays[i - 1].day +
               " " +
-              tempStartHr +
+              formatHr(tempStartHr) +
               " - " +
-              tempEndHr
+              formatHr(tempEndHr)
           } else {
-            tempDay += " " + tempStartHr + " - " + tempEndHr
+            tempDay += " " + formatHr(tempStartHr) + " - " + formatHr(tempEndHr)
           }
-          //reset
-          displayHappyHrArr.push(tempDay)
+          //reset everything for a new entry to text array
+          textArrToDisplay.push(tempDay)
           weekdaysOffsetIndex =
-            weekdays.indexOf(happyHrArr[i].day.toLowerCase()) - i
-          tempDay = happyHrArr[i].day
-          tempStartHr = happyHrArr[i].startHr
-          tempEndHr = happyHrArr[i].endHr
+            weekdays.indexOf(oysterDays[i].day.toLowerCase()) - i
+          tempDay = oysterDays[i].day
+          tempStartHr = oysterDays[i].startHr
+          tempEndHr = oysterDays[i].endHr
         }
       }
+
       if (
-        tempDay !== happyHrArr[happyHrArr.length - 1].day ||
-        tempStartHr !== happyHrArr[happyHrArr.length - 1].startHr ||
-        tempEndHr !== happyHrArr[happyHrArr.length - 1].endHr
+        tempDay !== oysterDays[oysterDays.length - 1].day ||
+        tempStartHr !== oysterDays[oysterDays.length - 1].startHr ||
+        tempEndHr !== oysterDays[oysterDays.length - 1].endHr
       ) {
         tempDay +=
           " - " +
-          happyHrArr[happyHrArr.length - 1].day +
+          oysterDays[oysterDays.length - 1].day +
           " " +
-          tempStartHr +
+          formatHr(tempStartHr) +
           " - " +
-          tempEndHr
+          formatHr(tempEndHr)
       } else {
-        tempDay += " " + tempStartHr + " - " + tempEndHr
+        tempDay += " " + formatHr(tempStartHr) + " - " + formatHr(tempEndHr)
       }
-      displayHappyHrArr.push(tempDay)
+      textArrToDisplay.push(tempDay)
 
       return (
         <div>
-          {displayHappyHrArr.map((e, index) => {
+          {textArrToDisplay.map((e, index) => {
             return <div key={index}> {e} </div>
           })}
         </div>
       )
     }
 
+    const isOpenNow = () => {
+      const now = new Date()
+      const today = now.toLocaleDateString("en-US", { weekday: "short" })
+      const curHour = now.getHours()
+      const oysterDays = data.hours || []
+      for (let i = 0; i < oysterDays?.length; i++) {
+        if (
+          today.toLowerCase() === oysterDays[i].day.toLowerCase() &&
+          curHour >= oysterDays[i].startHr &&
+          curHour < oysterDays[i].endHr
+        ) {
+          return true
+        }
+      }
+      return false
+    }
+
+    const oysterStatus = isOpenNow()
     return (
       <div
         ref={ref}
@@ -129,17 +156,15 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
           >
             {data.name}
           </a>
+          {data.hours && (
+            <div className="font-bold">
+              {formatOysterDaysAndHours(data.hours)}
+            </div>
+          )}
         </h1>
-        <div>
-          {data.hours?.map((day, index) => {
-            return (
-              <div key={index}>
-                {day.day} {day.startHr} {day.endHr}
-              </div>
-            )
-          })}
+        <div className={`${oysterStatus ? "bg-green-300" : "bg-red-500"}`}>
+          {isOpenNow() == true ? "Open" : ""}
         </div>
-        {data.hours && <div> {formatHappyHr(data.hours)}</div>}
         <div className="flex flex-col">
           <span>{data.phone && formatPhoneNum(data.phone)}</span>
           <span>{data.address}</span>
