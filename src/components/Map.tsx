@@ -1,14 +1,14 @@
 import { MapContainer, TileLayer } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
-import type { restaurantCardProps } from "./RestaurantCard"
+import type { restaurantType } from "./RestaurantCard"
 import { MapMarker } from "./MapMarker"
 
 type MapPros = {
-  dataArr: Array<restaurantCardProps>
+  dataArr: Array<restaurantType>
+  selection: restaurantType | null
 }
-export const Map = ({ dataArr }: MapPros) => {
+export const Map = ({ dataArr, selection }: MapPros) => {
   const BOSTON_COORDINATES: [number, number] = [42.3601, -71.0589]
-  console.log("data arr:", dataArr)
   return (
     <div
       className="
@@ -33,6 +33,7 @@ export const Map = ({ dataArr }: MapPros) => {
               key={index}
               name={restaurantData.name}
               position={restaurantData.position}
+              selection={selection}
             />
           )
         })}

@@ -1,12 +1,14 @@
 import L from "leaflet"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import { Marker, Popup } from "react-leaflet"
+import type { restaurantType } from "./RestaurantCard"
 
 type MapMarkerProps = {
   position: { lat: number; lng: number }
   name: string
+  selection: restaurantType | null
 }
-export const MapMarker = ({ position, name }: MapMarkerProps) => {
+export const MapMarker = ({ position, name, selection }: MapMarkerProps) => {
   const oysterIcon = L.icon({
     iconUrl: "/oyster.png",
     iconSize: [25, 35],
@@ -16,6 +18,14 @@ export const MapMarker = ({ position, name }: MapMarkerProps) => {
   })
 
   const markerRef = useRef<L.Marker>(null)
+
+  useEffect(() => {
+    if (selection?.name === name && markerRef.current) {
+      markerRef.current.openPopup()
+    } else {
+      markerRef.current?.closePopup()
+    }
+  }, [selection, name])
 
   const handleMouseOver = () => {
     if (markerRef.current) {
@@ -27,11 +37,15 @@ export const MapMarker = ({ position, name }: MapMarkerProps) => {
       markerRef.current.closePopup()
     }
   }
+
   return (
     <Marker
       position={position}
       icon={oysterIcon}
-      eventHandlers={{ mouseover: handleMouseOver, mouseout: handleMouseOut }}
+      eventHandlers={{
+        mouseover: handleMouseOver,
+        mouseout: handleMouseOut,
+      }}
       ref={markerRef}
     >
       <Popup autoClose closeOnEscapeKey>

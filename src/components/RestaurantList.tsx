@@ -1,10 +1,16 @@
-import { RestaurantCard, type restaurantCardProps } from "./RestaurantCard"
+import { RestaurantCard, type restaurantType } from "./RestaurantCard"
 
 type RestaurantListProps = {
-  dataArr: Array<restaurantCardProps>
+  dataArr: Array<restaurantType>
+  selection: restaurantType | null
+  setSelection: (restaurant: restaurantType) => void
 }
 
-export const RestaurantList = ({ dataArr }: RestaurantListProps) => {
+export const RestaurantList = ({
+  dataArr,
+  selection,
+  setSelection,
+}: RestaurantListProps) => {
   return (
     <div
       className="
@@ -14,8 +20,15 @@ export const RestaurantList = ({ dataArr }: RestaurantListProps) => {
           xl:ml-150 xl:w-150 
         "
     >
+      {selection && <div> Current Selection: {selection?.name}</div>}{" "}
       {dataArr.map((restaurantData, index) => {
-        return <RestaurantCard key={index} {...restaurantData} />
+        return (
+          <RestaurantCard
+            key={index}
+            data={restaurantData}
+            setSelection={setSelection}
+          />
+        )
       })}
     </div>
   )

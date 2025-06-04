@@ -1,10 +1,11 @@
 import { Header } from "./components/Header"
 import { RestaurantList } from "./components/RestaurantList"
 import { Map } from "./components/Map"
-import type { restaurantCardProps } from "./components/RestaurantCard"
+import { useState } from "react"
+import type { restaurantType } from "./components/RestaurantCard"
 
 export const App = () => {
-  const restaurantData: Array<restaurantCardProps> = [
+  const restaurantData: Array<restaurantType> = [
     {
       name: "Thirsty Scholar Pub",
       position: { lat: 42.376311, lng: -71.104222 },
@@ -62,14 +63,18 @@ export const App = () => {
         "https://www.google.com/maps/place/Carrie+Nation+Cocktail+Club/@42.3583663,-71.0616334,17z/data=!3m1!4b1!4m6!3m5!1s0x89e37084b32c045f:0x19d822dd35782b1e!8m2!3d42.3583663!4d-71.0616334!16s%2Fg%2F12jm40qs5?entry=ttu",
     },
   ]
-
+  const [selection, setSelection] = useState<restaurantType | null>(null)
   return (
     <div className="bg-pink-200 w-full min-h-screen">
       <Header />
       {/* <div className="h-screen flex flex-wrap md:flex-nowrap gap-10 justify-center p-5"> */}
       <div className="flex md:flex-nowrap flex-wrap xl:justify-center ">
-        <Map dataArr={restaurantData} />
-        <RestaurantList dataArr={restaurantData} />
+        <Map dataArr={restaurantData} selection={selection} />
+        <RestaurantList
+          dataArr={restaurantData}
+          selection={selection}
+          setSelection={setSelection}
+        />
       </div>
     </div>
   )
