@@ -6,3 +6,243 @@ phone: number
 link: string
 googleMapLink: string
 hours: [{day: string, startHr: number, endHr: string}]
+
+[
+{
+"id": "la-brasa",
+"name": "La Brasa",
+"position": { "lat": 42.38776, "lng": -71.08446 },
+"phone": "6177641412",
+"address": "124 Broadway,Somerville, MA 02145",
+"link": "https://www.labrasasomerville.com/",
+"googleMapLink": "https://www.google.com/maps/place/La+Brasa/@42.3877729,-71.0844509,17z/data=!3m1!4b1!4m6!3m5!1s0x89e370da615f0f83:0x9597f841d392483c!8m2!3d42.3877729!4d-71.0844509!16s%2Fg%2F1q5bwqy2h?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
+"hours": [
+{ "day": "Mon", "startHr": 17, "endHr": 18 },
+{ "day": "Tue", "startHr": 17, "endHr": 18 },
+{ "day": "Wed", "startHr": 17, "endHr": 18 },
+{ "day": "Thu", "startHr": 17, "endHr": 18 },
+{ "day": "Fri", "startHr": 17, "endHr": 18 }
+],
+"notes": ""
+},
+{
+"id": "warren-tavern",
+"name": "Warren Tavern",
+"position": { "lat": 42.37416, "lng": -71.0631 },
+"phone": "6172418142",
+"address": "2 Pleasant St, Charlestown, MA 02129",
+"link": "https://www.warrentavern.com/",
+"googleMapLink": "https://www.google.com/maps/place/Warren+Tavern/@42.3740052,-71.0631229,20.33z/data=!4m6!3m5!1s0x89e370ed7348f66f:0x884dacf410968c9e!8m2!3d42.3741694!4d-71.0631664!16s%2Fm%2F03gy0j4?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
+"hours": [
+{ "day": "Mon", "startHr": 15, "endHr": 17 },
+{ "day": "Tue", "startHr": 15, "endHr": 17 },
+{ "day": "Wed", "startHr": 15, "endHr": 17 },
+{ "day": "Thu", "startHr": 15, "endHr": 17 },
+{ "day": "Fri", "startHr": 15, "endHr": 17 }
+],
+"notes": ""
+},
+{
+"id": "way-point",
+"name": "Way Point",
+"position": { "lat": 42.36949, "lng": -71.11233 },
+"phone": "6178642300",
+"address": "1030 Massachusetts Ave, Cambridge, MA 02138",
+"link": "https://www.waypointharvard.com/",
+"googleMapLink": "https://www.google.com/maps/place/Waypoint/@42.369502,-71.1128689,19z/data=!3m1!5s0x89e3775b1dba5179:0xb30cb5470758ec12!4m15!1m8!3m7!1s0x89e3775b1dfb6cab:0xeb56ef8359fafae!2s1030+Massachusetts+Ave,+Cambridge,+MA+02138!3b1!8m2!3d42.369502!4d-71.1122252!16s%2Fg%2F11pw0h2cls!3m5!1s0x89e3775b1da52211:0xff227970e629b19c!8m2!3d42.3695286!4d-71.1123022!16s%2Fg%2F11cr_377d0?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
+"hours": [
+{ "day": "Mon", "startHr": 17, "endHr": 19 },
+{ "day": "Tue", "startHr": 17, "endHr": 19 },
+{ "day": "Wed", "startHr": 17, "endHr": 19 },
+{ "day": "Thu", "startHr": 17, "endHr": 19 },
+{ "day": "Fri", "startHr": 17, "endHr": 19 },
+{ "day": "Sat", "startHr": 17, "endHr": 19 },
+{ "day": "Sun", "startHr": 17, "endHr": 19 }
+],
+"notes": "Fridays & Saturdays only offered at the bar. First come first served."
+},
+{
+"id": "viale",
+"name": "Viale",
+"position": { "lat": 42.36399, "lng": -71.10181 },
+"phone": "6175761900",
+"address": "502 massachusetts ave cambridge, ma 02139",
+"link": "https://www.vialecambridge.com/",
+"googleMapLink": "https://www.google.com/maps/place/Viale/@42.3640063,-71.1043864,17z/data=!3m1!4b1!4m6!3m5!1s0x89e377540cfccdd9:0x9a03f44bae811e0e!8m2!3d42.3640063!4d-71.1018061!16s%2Fg%2F11b6cj0yrx?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
+"hours": [
+{ "day": "Mon", "startHr": 17, "endHr": 19 },
+{ "day": "Tue", "startHr": 17, "endHr": 19 },
+{ "day": "Wed", "startHr": 17, "endHr": 19 },
+{ "day": "Thu", "startHr": 17, "endHr": 19 },
+{ "day": "Fri", "startHr": 17, "endHr": 19 },
+{ "day": "Sat", "startHr": 17, "endHr": 19 },
+{ "day": "Sun", "startHr": 17, "endHr": 19 }
+],
+"notes": "friday 4p – 5p bar snacks, $1 oysters, & drinks"
+},
+{
+"id": "state-street-provisions",
+"name": "State Street Provisions",
+"position": { "lat": 42.35953, "lng": -71.05142 },
+"phone": "6178638363",
+"address": "255 State Street Boston, MA 02109",
+"link": "https://statestreetprovisions.com/",
+"googleMapLink": "https://www.google.com/maps/place/State+Street+Provisions/@42.3595127,-71.0562824,17z/data=!3m2!4b1!5s0x89e37087eb49848b:0x7d625acc96e5bb1d!4m6!3m5!1s0x89e37087c003c64b:0x9e85606d1cb23252!8m2!3d42.3595128!4d-71.0514169!16s%2Fg%2F11bx3s65z2?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
+"hours": [
+{ "day": "Mon", "startHr": 15, "endHr": 17 },
+{ "day": "Tue", "startHr": 15, "endHr": 17 },
+{ "day": "Wed", "startHr": 15, "endHr": 17 },
+{ "day": "Thu", "startHr": 15, "endHr": 17 },
+{ "day": "Fri", "startHr": 15, "endHr": 17 }
+],
+"notes": ""
+},
+{
+"id": "carrie-nation-cocktail-club",
+"name": "Carrie Nation Restaurant and Cocktail Club",
+"position": { "lat": 42.35836, "lng": -71.06163 },
+"phone": "6172273100",
+"address": "11 Beacon Street Boston, MA 02108",
+"link": "https://www.carrienationcocktailclub.com/",
+"googleMapLink": "https://www.google.com/maps/place/Carrie+Nation+Cocktail+Club/@42.3583663,-71.0642137,17z/data=!3m2!4b1!5s0x89e3709b4cc43a0d:0xefe0ad65611de403!4m6!3m5!1s0x89e37084b32c045f:0x19d822dd35782b1e!8m2!3d42.3583663!4d-71.0616334!16s%2Fg%2F12jm40qs5?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
+"hours": [
+{ "day": "Tue", "startHr": 16, "endHr": 19 },
+{ "day": "Wed", "startHr": 16, "endHr": 19 },
+{ "day": "Thu", "startHr": 16, "endHr": 19 }
+],
+"notes": ""
+},
+{
+"id": "fin-point",
+"name": "Fin Point Oyster Bar + Grille",
+"position": { "lat": 42.35742, "lng": -71.053024 },
+"phone": "6173481234",
+"address": "89 Broad St, Boston, MA 02110",
+"link": "https://www.finpointrestaurant.com/",
+"googleMapLink": "https://www.google.com/maps/place/Fin+Point+Oyster+Bar+%2B+Grille/@42.3574252,-71.0556036,17z/data=!3m1!4b1!4m6!3m5!1s0x89e37086e094deb1:0x4d8d2bc5464b700b!8m2!3d42.3574252!4d-71.0530233!16s%2Fg%2F11c2pcdj70?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
+"hours": [
+{ "day": "Thu", "startHr": 14, "endHr": 17 },
+{ "day": "Fri", "startHr": 14, "endHr": 17 },
+{ "day": "Sat", "startHr": 14, "endHr": 17 },
+{ "day": "Sun", "startHr": 14, "endHr": 17 }
+],
+"notes": ""
+},
+{
+"id": "the-merchant",
+"name": "The Merchant",
+"position": { "lat": 42.35578, "lng": -71.05836 },
+"phone": "6174826060",
+"address": "60 Franklin St, Boston, MA 02110",
+"link": "https://www.themerchantboston.com/",
+"googleMapLink": "",
+"hours": [
+{ "day": "Mon", "startHr": 16, "endHr": 19 },
+{ "day": "Tue", "startHr": 16, "endHr": 19 },
+{ "day": "Wed", "startHr": 16, "endHr": 19 },
+{ "day": "Thu", "startHr": 16, "endHr": 19 },
+{ "day": "Fri", "startHr": 16, "endHr": 19 }
+],
+"notes": ""
+},
+{
+"id": "trillium-brewing",
+"name": "Trillium Brewing Company (Fort Point)",
+"position": { "lat": 42.3515, "lng": -71.0492 },
+"phone": "8574490083",
+"address": "50 Thomson Pl, Boston, MA 02210",
+"link": "https://www.trilliumbrewing.com/",
+"googleMapLink": "https://www.google.com/maps/place/Trillium+Brewing/@42.3515,-71.0492,17z",
+"hours": [
+{ "day": "Mon", "startHr": 14, "endHr": 16 },
+{ "day": "Tue", "startHr": 14, "endHr": 16 },
+{ "day": "Wed", "startHr": 14, "endHr": 16 },
+{ "day": "Thu", "startHr": 14, "endHr": 16 },
+{ "day": "Fri", "startHr": 14, "endHr": 16 }
+],
+"notes": "Fort Point location offering $1 oysters Monday through Friday from 2 to 4 p.m."
+},
+{
+"id": "publico-bistro",
+"name": "Publico Street Bistro & Garden",
+"position": { "lat": 42.3341, "lng": -71.0458 },
+"phone": "6176225700",
+"address": "11 Dorchester St, Boston, MA 02127",
+"link": "https://www.publicoboston.com/",
+"googleMapLink": "https://www.google.com/maps/place/Publico+Street+Bistro+%26+Garden/@42.3341,-71.0458,17z",
+"hours": [
+{ "day": "Mon", "startHr": 11, "endHr": 22 },
+{ "day": "Tue", "startHr": 11, "endHr": 22 }
+],
+"notes": "Serving $1 oysters and $1 shrimp cocktail every Monday and Tuesday from open until sold out."
+},
+{
+"id": "lincoln-tavern",
+"name": "Lincoln Tavern & Restaurant",
+"position": { "lat": 42.3383, "lng": -71.0486 },
+"phone": "6177658636",
+"address": "425 W Broadway, South Boston, MA 02127",
+"link": "https://www.lincolnsouthboston.com/",
+"googleMapLink": "https://www.google.com/maps/place/Lincoln+Tavern+%26+Restaurant/@42.3383,-71.0486,17z",
+"hours": [{ "day": "Tue", "startHr": 10, "endHr": 22 }],
+"notes": "Offering $1 oysters and $1 shrimp every Tuesday from 10 a.m. to 10 p.m."
+},
+{
+"id": "savin-bar-kitchen",
+"name": "Savin Bar and Kitchen",
+"position": { "lat": 42.3112, "lng": -71.0574 },
+"phone": "6172887500",
+"address": "116 Savin Hill Ave, Dorchester, MA 02125",
+"link": "https://www.savinbarandkitchen.com/",
+"googleMapLink": "https://www.google.com/maps/place/Savin+Bar+and+Kitchen/@42.3112,-71.0574,17z",
+"hours": [
+{ "day": "Mon", "startHr": 16, "endHr": 18 },
+{ "day": "Tue", "startHr": 16, "endHr": 18 },
+{ "day": "Wed", "startHr": 16, "endHr": 18 },
+{ "day": "Thu", "startHr": 16, "endHr": 18 },
+{ "day": "Fri", "startHr": 16, "endHr": 18 }
+],
+"notes": "Serving $1 oysters Monday through Friday from 4 to 6 p.m."
+},
+{
+"id": "lower-mills-tavern",
+"name": "Lower Mills Tavern",
+"position": { "lat": 42.2726, "lng": -71.0711 },
+"phone": "8572674461",
+"address": "2269 Dorchester Ave, Boston, MA 02124",
+"link": "https://www.lowermillstavern.com/",
+"googleMapLink": "https://www.google.com/maps/place/Lower+Mills+Tavern/@42.2726,-71.0711,17z",
+"hours": [{ "day": "Mon", "startHr": 11, "endHr": 22 }],
+"notes": "Offering $1 oysters every Monday until sold out."
+},
+{
+"id": "ilona",
+"name": "Ilona",
+"position": { "lat": 42.3405, "lng": -71.0784 },
+"phone": "6172077742",
+"address": "783 Tremont St, Boston, MA 02118",
+"link": "https://ilonasouthend.com/",
+"googleMapLink": "https://www.google.com/maps/place/Ilona/@42.3405,-71.0784,17z",
+"hours": [
+{ "day": "Thu", "startHr": 17, "endHr": 22.5 },
+{ "day": "Fri", "startHr": 16, "endHr": 19 },
+{ "day": "Sat", "startHr": 16, "endHr": 19 }
+],
+"notes": "$1 oysters Thu all night, Friday and Saturday from 4–7 p.m."
+},
+{
+"id": "bootlegspecial",
+"name": "Bootleg Special",
+"position": { "lat": 42.3452, "lng": -71.0705 },
+"phone": "6174511800",
+"address": "400 Tremont St, Boston, MA 02116",
+"link": "https://bootlegspecial.com/",
+"googleMapLink": "https://www.google.com/maps/place/Bootleg+Special/@42.3452,-71.0705,17z",
+"hours": [
+{ "day": "Thu", "startHr": 17, "endHr": 22 },
+{ "day": "Fri", "startHr": 22, "endHr": 24 },
+{ "day": "Sat", "startHr": 22, "endHr": 24 }
+],
+"notes": "$1 oysters Thursday from 5 p.m. to 10 p.m.; Friday and Saturday late night from 10 p.m. to midnight."
+}
+]
