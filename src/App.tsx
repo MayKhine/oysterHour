@@ -67,8 +67,7 @@ export const App = () => {
   return (
     <div className="bg-pink-200 w-full min-h-screen">
       <Header />
-      {/* <div className="h-screen flex flex-wrap md:flex-nowrap gap-10 justify-center p-5"> */}
-      <div className="flex md:flex-nowrap flex-wrap xl:justify-center ">
+      <div className="flex md:flex-nowrap flex-wrap xl:justify-center bg-amber-100 box-border md:pt-10">
         <Map
           dataArr={restaurantData}
           selection={selection}

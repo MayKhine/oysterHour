@@ -13,11 +13,11 @@ export const Map = ({ dataArr, selection, setSelection }: MapPros) => {
   return (
     <div
       className="
-        mt-20 w-full h-150 
-        md:w-120 md:h-200 md:max-h-full md:left-0  md:fixed md:z-10 md:top-20 md:mt-0 md:p-0
-        lg:w-120 lg:left-0  lg:fixed lg:z-10 lg:top-20 lg:mt-0 lg:p-0
+        box-border w-full h-100 border-4 mt-20
+        md:w-120 md:h-200 md:left-0 md:fixed md:z-10 md:p-0
         xl:w-150 xl:left-auto xl:mr-150
       "
+      style={{ maxHeight: "calc(100vh - 80px)" }}
     >
       <MapContainer
         center={BOSTON_COORDINATES}
