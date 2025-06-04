@@ -69,7 +69,11 @@ export const App = () => {
       <Header />
       {/* <div className="h-screen flex flex-wrap md:flex-nowrap gap-10 justify-center p-5"> */}
       <div className="flex md:flex-nowrap flex-wrap xl:justify-center ">
-        <Map dataArr={restaurantData} selection={selection} />
+        <Map
+          dataArr={restaurantData}
+          selection={selection}
+          setSelection={setSelection}
+        />
         <RestaurantList
           dataArr={restaurantData}
           selection={selection}

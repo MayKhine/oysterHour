@@ -7,8 +7,14 @@ type MapMarkerProps = {
   position: { lat: number; lng: number }
   name: string
   selection: restaurantType | null
+  setSelection: (restaurant: restaurantType) => void
 }
-export const MapMarker = ({ position, name, selection }: MapMarkerProps) => {
+export const MapMarker = ({
+  position,
+  name,
+  selection,
+  setSelection,
+}: MapMarkerProps) => {
   const oysterIcon = L.icon({
     iconUrl: "/oyster.png",
     iconSize: [25, 35],
@@ -38,6 +44,9 @@ export const MapMarker = ({ position, name, selection }: MapMarkerProps) => {
     }
   }
 
+  const handleClick = () => {
+    setSelection({ name, position })
+  }
   return (
     <Marker
       position={position}
@@ -45,6 +54,7 @@ export const MapMarker = ({ position, name, selection }: MapMarkerProps) => {
       eventHandlers={{
         mouseover: handleMouseOver,
         mouseout: handleMouseOut,
+        click: handleClick,
       }}
       ref={markerRef}
     >

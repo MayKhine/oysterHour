@@ -1,3 +1,5 @@
+import { forwardRef } from "react"
+
 export type restaurantType = {
   name: string
   position: { lat: number; lng: number }
@@ -9,29 +11,39 @@ export type restaurantType = {
 type restaurantCardProps = {
   data: restaurantType
   setSelection: (restaurant: restaurantType) => void
+  isSelected: boolean
 }
 
-export const RestaurantCard = ({ data, setSelection }: restaurantCardProps) => {
-  return (
-    <div className="flex flex-col gap-2">
-      <h3 className="font-bold text-xl cursor-pointer">{data.name}</h3>
+export const RestaurantCard = forwardRef<HTMLDivElement, restaurantCardProps>(
+  ({ data, setSelection, isSelected }, ref?) => {
+    return (
       <div
-        className="flex flex-col cursor-pointer"
-        onClick={() => {
-          setSelection({ name: data.name, position: data.position })
-        }}
+        ref={ref}
+        className={`flex flex-col gap-4 ${
+          isSelected ? "bg-blue-200" : "bg-gray-200"
+        }`}
       >
-        <span>{data.address}</span>
-        <span>{data.notes}</span>
-        <a
-          href={data.googleMapLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline mt-2 inline-block"
+        <h3 className="font-bold text-xl cursor-pointer bg-amber-200 max-w-max">
+          {data.name}
+        </h3>
+        <div
+          className="flex flex-col cursor-pointer"
+          onClick={() => {
+            setSelection({ name: data.name, position: data.position })
+          }}
         >
-          Google Map Link
-        </a>
+          <span>{data.address}</span>
+          <span>{data.notes}</span>
+          <a
+            href={data.googleMapLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline mt-2 inline-block"
+          >
+            Google Map Link
+          </a>
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 import { RestaurantCard, type restaurantType } from "./RestaurantCard"
 
 type RestaurantListProps = {
@@ -11,6 +12,18 @@ export const RestaurantList = ({
   selection,
   setSelection,
 }: RestaurantListProps) => {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    if (selection) {
+      const cardIndex = dataArr.findIndex((res) => res.name === selection.name)
+      const card = cardRefs.current[cardIndex]
+      if (card) {
+        card.scrollIntoView({ behavior: "smooth", block: "center" })
+      }
+    }
+  }, [selection, dataArr])
+
   return (
     <div
       className="
@@ -27,6 +40,12 @@ export const RestaurantList = ({
             key={index}
             data={restaurantData}
             setSelection={setSelection}
+            isSelected={selection?.name == restaurantData.name ? true : false}
+            ref={(element) => {
+              if (cardRefs) {
+                cardRefs.current[index] = element
+              }
+            }}
           />
         )
       })}
