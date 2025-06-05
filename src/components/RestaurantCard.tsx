@@ -17,10 +17,11 @@ type RestaurantCardProps = {
   data: RestaurantType
   setSelection: (restaurant: SelectionType) => void
   isSelected: boolean
+  oysterNow: boolean
 }
 
 export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
-  ({ data, setSelection, isSelected }, ref?) => {
+  ({ data, setSelection, isSelected, oysterNow }, ref?) => {
     const formatPhoneNum = (phone: string) => {
       const cleanedPhNum = ("" + phone).replace(/\D/g, "")
 
@@ -114,24 +115,7 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
       )
     }
 
-    const isOpenNow = () => {
-      const now = new Date()
-      const today = now.toLocaleDateString("en-US", { weekday: "short" })
-      const curHour = now.getHours()
-      const oysterDays = data.hours || []
-      for (let i = 0; i < oysterDays?.length; i++) {
-        if (
-          today.toLowerCase() === oysterDays[i].day.toLowerCase() &&
-          curHour >= oysterDays[i].startHr &&
-          curHour < oysterDays[i].endHr
-        ) {
-          return true
-        }
-      }
-      return false
-    }
-
-    const oysterStatus = isOpenNow()
+    // const oysterStatus = isOpenNow()
     return (
       <div
         ref={ref}
@@ -158,7 +142,7 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
           </a>
           <div
             className={`${
-              oysterStatus ? "bg-green-600" : "bg-gray-400"
+              oysterNow ? "bg-green-600" : "bg-gray-400"
             } rounded-full min-h-5 min-w-5`}
           ></div>
         </div>

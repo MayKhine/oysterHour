@@ -15,6 +15,7 @@ export const RestaurantList = ({
 }: RestaurantListProps) => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
   const [open, setOpen] = useState(false)
+
   useEffect(() => {
     if (selection?.scroll) {
       const cardIndex = dataArr.findIndex((res) => res.name === selection.name)
@@ -24,7 +25,22 @@ export const RestaurantList = ({
       }
     }
   }, [selection, dataArr])
-
+  const isOpenNow = (data: RestaurantType) => {
+    const now = new Date()
+    const today = now.toLocaleDateString("en-US", { weekday: "short" })
+    const curHour = now.getHours()
+    const oysterDays = data.hours || []
+    for (let i = 0; i < oysterDays?.length; i++) {
+      if (
+        today.toLowerCase() === oysterDays[i].day.toLowerCase() &&
+        curHour >= oysterDays[i].startHr &&
+        curHour < oysterDays[i].endHr
+      ) {
+        return true
+      }
+    }
+    return false
+  }
   return (
     <div
       className="box-border 
@@ -39,16 +55,16 @@ export const RestaurantList = ({
           <p className="font-bold">$1 Oyster Now</p>
 
           <div
-            className={` ${
+            className={` transition-property duration-300 ease-in-out ${
               open ? "bg-green-600" : "bg-gray-500 "
-            } w-17 rounded-3xl h-6 flex justify-self-center cursor-pointer`}
+            } w-15 rounded-3xl h-6 flex justify-self-center cursor-pointer`}
             onClick={() => {
               setOpen(!open)
             }}
           >
             <div
-              className={`w-7 transform transition-transform duration-200 flex items-center justify-center ${
-                open ? "translate-x-9" : "translate-x-1"
+              className={`w-7 transform transition-transform duration-300 ease-in-out flex items-center justify-center  ${
+                open ? "translate-x-7" : "translate-x-1"
               }`}
             >
               <img src={oysterIcon} />
@@ -59,19 +75,44 @@ export const RestaurantList = ({
 
       <div className="flex flex-col gap-5">
         {dataArr.map((restaurantData, index) => {
-          return (
-            <RestaurantCard
-              key={index}
-              data={restaurantData}
-              setSelection={setSelection}
-              isSelected={selection?.name == restaurantData.name ? true : false}
-              ref={(element) => {
-                if (cardRefs) {
-                  cardRefs.current[index] = element
+          const isRestaurantOpen = isOpenNow(restaurantData)
+
+          if (open && isRestaurantOpen) {
+            return (
+              <RestaurantCard
+                key={index}
+                data={restaurantData}
+                setSelection={setSelection}
+                isSelected={
+                  selection?.name == restaurantData.name ? true : false
                 }
-              }}
-            />
-          )
+                ref={(element) => {
+                  if (cardRefs) {
+                    cardRefs.current[index] = element
+                  }
+                }}
+                oysterNow={isRestaurantOpen}
+              />
+            )
+          }
+          if (!open) {
+            return (
+              <RestaurantCard
+                key={index}
+                data={restaurantData}
+                setSelection={setSelection}
+                isSelected={
+                  selection?.name == restaurantData.name ? true : false
+                }
+                ref={(element) => {
+                  if (cardRefs) {
+                    cardRefs.current[index] = element
+                  }
+                }}
+                oysterNow={isRestaurantOpen}
+              />
+            )
+          }
         })}
       </div>
     </div>
