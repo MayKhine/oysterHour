@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { RestaurantCard, type RestaurantType } from "./RestaurantCard"
 import type { SelectionType } from "../App"
-
+import oysterIcon from "../../public/oyster.png"
 type RestaurantListProps = {
   dataArr: Array<RestaurantType>
   selection: SelectionType | null
@@ -14,7 +14,7 @@ export const RestaurantList = ({
   setSelection,
 }: RestaurantListProps) => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-
+  const [open, setOpen] = useState(false)
   useEffect(() => {
     if (selection?.scroll) {
       const cardIndex = dataArr.findIndex((res) => res.name === selection.name)
@@ -34,10 +34,30 @@ export const RestaurantList = ({
           xl:ml-150 xl:w-150 
         "
     >
-      <div>
-        <p>Dollar Oyster Now </p>
+      <div className="flex justify-end">
+        <div className="h-15 flex items-center gap-2">
+          <p className="font-bold">$1 Oyster Now</p>
+
+          <div
+            className={` ${
+              open ? "bg-green-600" : "bg-gray-500 "
+            } w-17 rounded-3xl h-6 flex justify-self-center cursor-pointer`}
+            onClick={() => {
+              setOpen(!open)
+            }}
+          >
+            <div
+              className={`w-7 transform transition-transform duration-200 flex items-center justify-center ${
+                open ? "translate-x-9" : "translate-x-1"
+              }`}
+            >
+              <img src={oysterIcon} />
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
+
+      <div className="flex flex-col gap-5">
         {dataArr.map((restaurantData, index) => {
           return (
             <RestaurantCard

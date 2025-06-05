@@ -147,7 +147,7 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
           })
         }}
       >
-        <h1>
+        <div className="flex justify-between items-start gap-2">
           <a
             href={data.link}
             target="_blank"
@@ -156,9 +156,11 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
           >
             {data.name}
           </a>
-        </h1>
-        <div className={`${oysterStatus ? "bg-green-300" : "bg-red-500"}`}>
-          {isOpenNow() == true ? "Open" : ""}
+          <div
+            className={`${
+              oysterStatus ? "bg-green-600" : "bg-gray-400"
+            } rounded-full min-h-5 min-w-5`}
+          ></div>
         </div>
 
         <div className="flex flex-col">
