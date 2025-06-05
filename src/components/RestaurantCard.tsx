@@ -156,16 +156,17 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
           >
             {data.name}
           </a>
+        </h1>
+        <div className={`${oysterStatus ? "bg-green-300" : "bg-red-500"}`}>
+          {isOpenNow() == true ? "Open" : ""}
+        </div>
+
+        <div className="flex flex-col">
           {data.hours && (
             <div className="font-bold">
               {formatOysterDaysAndHours(data.hours)}
             </div>
           )}
-        </h1>
-        <div className={`${oysterStatus ? "bg-green-300" : "bg-red-500"}`}>
-          {isOpenNow() == true ? "Open" : ""}
-        </div>
-        <div className="flex flex-col">
           <span>{data.phone && formatPhoneNum(data.phone)}</span>
           <span>{data.address}</span>
           <span>{data.notes}</span>

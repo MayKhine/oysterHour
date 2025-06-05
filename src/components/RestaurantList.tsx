@@ -29,26 +29,31 @@ export const RestaurantList = ({
     <div
       className="box-border 
           opacity-80 w-full p-5 pt-0 flex flex-col gap-5
-          md:ml-120  md:p-10 md:pt-0 md:min-h-max
-          lg:ml-120  lg:min-h-max 
+          md:ml-120 md:p-10 md:pt-0 md:min-h-max
+          lg:ml-120 lg:min-h-max 
           xl:ml-150 xl:w-150 
         "
     >
-      {dataArr.map((restaurantData, index) => {
-        return (
-          <RestaurantCard
-            key={index}
-            data={restaurantData}
-            setSelection={setSelection}
-            isSelected={selection?.name == restaurantData.name ? true : false}
-            ref={(element) => {
-              if (cardRefs) {
-                cardRefs.current[index] = element
-              }
-            }}
-          />
-        )
-      })}
+      <div>
+        <p>Dollar Oyster Now </p>
+      </div>
+      <div>
+        {dataArr.map((restaurantData, index) => {
+          return (
+            <RestaurantCard
+              key={index}
+              data={restaurantData}
+              setSelection={setSelection}
+              isSelected={selection?.name == restaurantData.name ? true : false}
+              ref={(element) => {
+                if (cardRefs) {
+                  cardRefs.current[index] = element
+                }
+              }}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

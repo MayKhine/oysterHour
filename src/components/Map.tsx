@@ -14,12 +14,14 @@ export const Map = ({ dataArr, selection, setSelection }: MapPros) => {
   return (
     <div
       className="
+      opacity-30
         box-border w-full h-100 border-4  max-h-[calc(100vh-80px)] z-0
         md:w-120 md:h-200 md:left-0 md:fixed md:z-1 md:p-0
         xl:w-150 xl:left-auto xl:mr-150
       "
     >
-      <MapContainer
+      TEST MAP
+      {/* <MapContainer
         center={BOSTON_COORDINATES}
         zoom={13}
         style={{ height: "100%", width: "100%" }}
@@ -42,7 +44,7 @@ export const Map = ({ dataArr, selection, setSelection }: MapPros) => {
             />
           )
         })}
-      </MapContainer>
+      </MapContainer> */}
     </div>
   )
 }
