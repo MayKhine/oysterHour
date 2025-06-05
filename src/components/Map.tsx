@@ -14,35 +14,37 @@ export const Map = ({ dataArr, selection, setSelection }: MapPros) => {
   return (
     <div
       className="
-        box-border w-full h-100 border-4  max-h-[calc(100vh-80px)] z-0
-        md:w-120 md:h-200 md:left-0 md:fixed md:z-1 md:p-0
+        box-border w-full h-100  max-h-[calc(100vh-80px)] z-0
+        md:w-120 md:h-220 md:left-0 md:fixed md:z-1 md:p-0 md:pt-20
         xl:w-150 xl:left-auto xl:mr-150
       "
     >
-      <MapContainer
-        center={BOSTON_COORDINATES}
-        zoom={13}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <TileLayer
-          // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          // attribution="&copy; OpenStreetMap contributors"
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          attribution="© OpenStreetMap, © CartoDB"
-        />
-        {dataArr.map((restaurantData, index) => {
-          return (
-            <MapMarker
-              key={index}
-              id={restaurantData.id}
-              name={restaurantData.name}
-              position={restaurantData.position}
-              selection={selection}
-              setSelection={setSelection}
-            />
-          )
-        })}
-      </MapContainer>
+      <div className="border-2 h-full">
+        <MapContainer
+          center={BOSTON_COORDINATES}
+          zoom={13}
+          style={{ height: "100%", width: "100%" }}
+        >
+          <TileLayer
+            // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            // attribution="&copy; OpenStreetMap contributors"
+            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+            attribution="© OpenStreetMap, © CartoDB"
+          />
+          {dataArr.map((restaurantData, index) => {
+            return (
+              <MapMarker
+                key={index}
+                id={restaurantData.id}
+                name={restaurantData.name}
+                position={restaurantData.position}
+                selection={selection}
+                setSelection={setSelection}
+              />
+            )
+          })}
+        </MapContainer>
+      </div>
     </div>
   )
 }
