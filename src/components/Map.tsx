@@ -13,13 +13,13 @@ export const Map = ({ dataArr, selection, setSelection }: MapPros) => {
   const BOSTON_COORDINATES: [number, number] = [42.3601, -71.0589]
   return (
     <div
-      className="
-        box-border w-full h-100  max-h-[calc(100vh-80px)] z-0
-        md:w-120 md:h-220 md:left-0 md:fixed md:z-1 md:p-0 md:pt-20
+      className=" 
+        box-border w-full h-100 max-h-[calc(100vh-80px)] z-0 p-5
+        md:w-110 md:h-220 md:left-0 md:fixed md:z-1 md:p-0 md:pt-15 md:pl-10
         xl:w-150 xl:left-auto xl:mr-150
       "
     >
-      <div className="border-2 h-full">
+      <div className="h-full rounded-xl overflow-hidden">
         <MapContainer
           center={BOSTON_COORDINATES}
           zoom={13}

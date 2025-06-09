@@ -71,10 +71,10 @@ export const App = () => {
 
   const [selection, setSelection] = useState<SelectionType | null>(null)
   return (
-    <div className="bg-pink-200 w-full min-h-screen">
+    <div className="w-full min-h-screen custom-gradient">
       <Header />
       <div
-        className="flex flex-wrap gap-10 bg-amber-100 box-border mt-20 
+        className="flex flex-wrap gap-10 box-border pt-20
       md:flex-nowrap md:gap-0 
       xl:justify-center"
       >

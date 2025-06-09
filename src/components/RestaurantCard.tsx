@@ -119,9 +119,12 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
     return (
       <div
         ref={ref}
-        className={`flex flex-col gap-4 ${
-          isSelected ? "bg-blue-200" : "bg-gray-200"
-        }`}
+        className={` flex flex-col gap-4 ${
+          isSelected
+            ? "border-white border-2 box-sizing"
+            : "border-softteal border-2 box-sizing"
+        }
+        bg-softteal p-5 rounded-xl`}
         onClick={() => {
           setSelection({
             id: data.id,
@@ -136,14 +139,14 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
             href={data.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-bold text-xl cursor-pointer bg-amber-200 max-w-max"
+            className="font-bold text-xl cursor-pointer  max-w-max"
           >
             {data.name}
           </a>
           <div
             className={`${
               oysterNow ? "bg-green-600" : "bg-gray-400"
-            } rounded-full min-h-5 min-w-5`}
+            } rounded-full min-h-5 min-w-5 border-1 border-white`}
           ></div>
         </div>
 

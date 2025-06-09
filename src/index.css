@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  --color-lightgray: #d5d9dc;
+  --color-softpeach: #f5d6ca;
+  --color-peach: #eebeb1;
+  --color-sky: #acd4e4;
+  --color-sky2: #9ed8f0;
+  --color-purplesky: #bba0d1;
+  --color-softteal: #c1e4e3;
+}
+
 :root,
 html,
 body {
@@ -13,4 +23,15 @@ body {
 
 a {
   margin: 0%;
+}
+
+.custom-gradient {
+  background: linear-gradient(
+    to bottom,
+    #acd4e4 30%,
+    #9ed8f0 40%,
+    #f5d6ca 50%,
+    #eebeb1 60%,
+    #c3b1e1 90%
+  );
 }

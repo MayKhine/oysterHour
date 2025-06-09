@@ -44,9 +44,9 @@ export const RestaurantList = ({
   return (
     <div
       className="box-border 
-          opacity-80 w-full p-5 pt-0 flex flex-col gap-5
-          md:ml-120 md:p-10 md:pt-0 md:min-h-max
-          lg:ml-120 lg:min-h-max 
+          w-full p-5 pt-0 flex flex-col 
+          md:ml-110 md:p-10 md:pt-0 md:min-h-max
+          lg:ml-110 lg:min-h-max 
           xl:ml-150 xl:w-150 
         "
     >
