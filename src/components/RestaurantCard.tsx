@@ -1,4 +1,5 @@
 import { forwardRef } from "react"
+import { isDollarOysterOpenNow } from "../helpers/filterHelpers"
 import type { SelectionType } from "../App"
 
 export type RestaurantType = {
@@ -16,12 +17,12 @@ export type RestaurantType = {
 type RestaurantCardProps = {
   data: RestaurantType
   setSelection: (restaurant: SelectionType) => void
+
   isSelected: boolean
-  oysterNow: boolean
 }
 
 export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
-  ({ data, setSelection, isSelected, oysterNow }, ref?) => {
+  ({ data, setSelection, isSelected }, ref?) => {
     const formatPhoneNum = (phone: string) => {
       const cleanedPhNum = ("" + phone).replace(/\D/g, "")
 
@@ -116,6 +117,7 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
     }
 
     // const oysterStatus = isOpenNow()
+    const oysterNow = isDollarOysterOpenNow(data)
     return (
       <div
         ref={ref}
