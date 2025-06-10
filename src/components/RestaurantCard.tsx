@@ -136,12 +136,12 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
           })
         }}
       >
-        <div className="flex justify-between items-start bg-amber-500">
+        <div className="flex justify-between items-start ">
           <a
             href={data.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-bold text-xl cursor-pointer  max-w-max"
+            className="font-bold text-xl cursor-pointer  max-w-max hover:underline"
           >
             {data.name}
           </a>
@@ -174,7 +174,7 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
               href={data.googleMapLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline mt-2 inline-block max-w-max"
+              className="hover:underline mt-2 inline-block max-w-max"
             >
               {data.address}
             </a>

@@ -34,26 +34,6 @@ export const MapMarker = ({
     className: "leaflet-oyster-icon-hover",
   })
 
-  // const markerRef = useRef<L.Marker>(null)
-  // useEffect(() => {
-  //   if (selection?.name === name && markerRef.current) {
-  //     markerRef.current.openPopup()
-  //   } else {
-  //     markerRef.current?.closePopup()
-  //   }
-  // }, [selection, name])
-
-  // const handleMouseOver = () => {
-  //   if (markerRef.current) {
-  //     markerRef.current.openPopup()
-  //   }
-  // }
-  // const handleMouseOut = () => {
-  //   if (markerRef.current) {
-  //     markerRef.current.closePopup()
-  //   }
-  // }
-
   const handleClick = () => {
     setSelection({ id, name, position, scroll: true })
   }

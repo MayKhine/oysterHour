@@ -11,7 +11,7 @@
       { "day": "Mon", "startHr": 17, "endHr": 18 },
       { "day": "Tue", "startHr": 17, "endHr": 18 },
       { "day": "Wed", "startHr": 17, "endHr": 18 },
-      { "day": "Thu", "startHr": 11, "endHr": 18 },
+      { "day": "Thu", "startHr": 17, "endHr": 18 },
       { "day": "Fri", "startHr": 17, "endHr": 18 }
     ],
     "notes": ""
@@ -83,7 +83,7 @@
       { "day": "Mon", "startHr": 15, "endHr": 17 },
       { "day": "Tue", "startHr": 15, "endHr": 17 },
       { "day": "Wed", "startHr": 15, "endHr": 17 },
-      { "day": "Thu", "startHr": 11, "endHr": 17 },
+      { "day": "Thu", "startHr": 15, "endHr": 17 },
       { "day": "Fri", "startHr": 15, "endHr": 17 }
     ],
     "notes": ""
