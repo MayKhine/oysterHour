@@ -1,8 +1,8 @@
 import L from "leaflet"
-import { useEffect, useRef } from "react"
-import { Marker, Popup } from "react-leaflet"
+import { Marker, Tooltip } from "react-leaflet"
 import type { RestaurantType } from "./RestaurantCard"
 import type { SelectionType } from "../App"
+import { useState } from "react"
 
 type MapMarkerProps = {
   id: string
@@ -15,55 +15,67 @@ export const MapMarker = ({
   id,
   position,
   name,
-  selection,
   setSelection,
 }: MapMarkerProps) => {
+  const [isHovered, setIsHovered] = useState(false)
   const oysterIcon = L.icon({
-    iconUrl: "/oyster.png",
+    iconUrl: "oyster.png",
     iconSize: [25, 35],
     iconAnchor: [16, 32],
     popupAnchor: [0, -15],
     className: "leaflet-oyster-icon",
   })
 
-  const markerRef = useRef<L.Marker>(null)
+  const oysterHoverIcon = L.icon({
+    iconUrl: "/oyster_green.png",
+    iconSize: [25, 35],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -15],
+    className: "leaflet-oyster-icon-hover",
+  })
 
-  useEffect(() => {
-    if (selection?.name === name && markerRef.current) {
-      markerRef.current.openPopup()
-    } else {
-      markerRef.current?.closePopup()
-    }
-  }, [selection, name])
+  // const markerRef = useRef<L.Marker>(null)
+  // useEffect(() => {
+  //   if (selection?.name === name && markerRef.current) {
+  //     markerRef.current.openPopup()
+  //   } else {
+  //     markerRef.current?.closePopup()
+  //   }
+  // }, [selection, name])
 
-  const handleMouseOver = () => {
-    if (markerRef.current) {
-      markerRef.current.openPopup()
-    }
-  }
-  const handleMouseOut = () => {
-    if (markerRef.current) {
-      markerRef.current.closePopup()
-    }
-  }
+  // const handleMouseOver = () => {
+  //   if (markerRef.current) {
+  //     markerRef.current.openPopup()
+  //   }
+  // }
+  // const handleMouseOut = () => {
+  //   if (markerRef.current) {
+  //     markerRef.current.closePopup()
+  //   }
+  // }
 
   const handleClick = () => {
     setSelection({ id, name, position, scroll: true })
   }
+
   return (
     <Marker
       position={position}
-      icon={oysterIcon}
+      icon={isHovered ? oysterHoverIcon : oysterIcon}
       eventHandlers={{
-        mouseover: handleMouseOver,
-        mouseout: handleMouseOut,
         click: handleClick,
+        mouseover: () => setIsHovered(true),
+        mouseout: () => setIsHovered(false),
       }}
-      ref={markerRef}
     >
-      <Popup autoClose closeOnEscapeKey>
+      <Tooltip
+        direction="top"
+        offset={[0, -33]}
+        permanent={false}
+        sticky={false}
+      >
         {name}
-      </Popup>
+      </Tooltip>
     </Marker>
   )
 }

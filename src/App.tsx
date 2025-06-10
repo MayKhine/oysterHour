@@ -25,12 +25,11 @@ export const App = () => {
     }
   }, [showDollarOysterNow])
 
-  console.log("what is in filtered data: ", filteredData)
   return (
     <div className="w-full min-h-screen custom-gradient">
       <Header />
       <div
-        className="flex flex-wrap gap-10 box-border pt-20
+        className="flex flex-wrap gap-10 box-border pt-15
       md:flex-nowrap md:gap-0 
       xl:justify-center"
       >

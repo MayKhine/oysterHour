@@ -1,7 +1,7 @@
-import { forwardRef } from "react"
+import { forwardRef, useState } from "react"
 import { isDollarOysterOpenNow } from "../helpers/filterHelpers"
 import type { SelectionType } from "../App"
-
+import { Tooltip } from "./Tooltip"
 export type RestaurantType = {
   id: string
   name: string
@@ -17,7 +17,6 @@ export type RestaurantType = {
 type RestaurantCardProps = {
   data: RestaurantType
   setSelection: (restaurant: SelectionType) => void
-
   isSelected: boolean
 }
 
@@ -118,10 +117,11 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
 
     // const oysterStatus = isOpenNow()
     const oysterNow = isDollarOysterOpenNow(data)
+    const [statusHover, setStatusHover] = useState(false)
     return (
       <div
         ref={ref}
-        className={` flex flex-col gap-4 ${
+        className={` flex flex-col gap-2 ${
           isSelected
             ? "border-white border-2 box-sizing"
             : "border-softteal border-2 box-sizing"
@@ -136,7 +136,7 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
           })
         }}
       >
-        <div className="flex justify-between items-start gap-2">
+        <div className="flex justify-between items-start bg-amber-500">
           <a
             href={data.link}
             target="_blank"
@@ -145,31 +145,47 @@ export const RestaurantCard = forwardRef<HTMLDivElement, RestaurantCardProps>(
           >
             {data.name}
           </a>
-          <div
-            className={`${
-              oysterNow ? "bg-green-600" : "bg-gray-400"
-            } rounded-full min-h-5 min-w-5 border-1 border-white`}
-          ></div>
+
+          <div>
+            <div
+              className={`${
+                oysterNow ? "bg-green-600" : "bg-gray-400"
+              } rounded-full min-h-5 min-w-5 border-1 border-white`}
+              onMouseEnter={() => {
+                setStatusHover(true)
+              }}
+              onMouseLeave={() => {
+                setStatusHover(false)
+              }}
+            ></div>
+            {statusHover && (
+              <Tooltip
+                text={oysterNow === true ? "$ Oyster Now" : "Unavailable"}
+                ml="-ml-20"
+              />
+            )}
+          </div>
         </div>
 
-        <div className="flex flex-col">
-          {data.hours && (
-            <div className="font-bold">
-              {formatOysterDaysAndHours(data.hours)}
-            </div>
-          )}
-          <span>{data.phone && formatPhoneNum(data.phone)}</span>
-          <span>{data.address}</span>
-          <span>{data.notes}</span>
-          <a
-            href={data.googleMapLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline mt-2 inline-block max-w-max"
-          >
-            Google Map Link
-          </a>
-          {data.notes && <p className="font-bold text-sm">{data.notes}</p>}
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col">
+            <span>{data.phone && formatPhoneNum(data.phone)}</span>
+            <a
+              href={data.googleMapLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline mt-2 inline-block max-w-max"
+            >
+              {data.address}
+            </a>
+          </div>
+          <div>
+            <div className="font-bold">Dollar Oyster Hours </div>
+            {data.hours && (
+              <div className="">{formatOysterDaysAndHours(data.hours)}</div>
+            )}
+          </div>
+          {data.notes && <p className="font-bold text-sm">📌 {data.notes}</p>}
         </div>
       </div>
     )
